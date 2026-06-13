@@ -44,3 +44,10 @@ function createApp(db) {
 }
 
 module.exports = createApp;
+
+if (require.main === module) {
+  const db = require('./db');
+  const app = createApp(db);
+  const port = Number(process.env.PORT) || 3000;
+  app.listen(port, () => console.log(`my_press on http://localhost:${port}`));
+}
