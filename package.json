@@ -1,7 +1,7 @@
 {
   "name": "my_press",
   "version": "1.0.0",
-  "description": "RSS newspaper front page backed by Postgres",
+  "description": "RSS newspaper front page backed by MySQL",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -11,7 +11,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "helmet": "^7.1.0",
-    "pg": "^8.12.0"
+    "mysql2": "^3.22.5"
   },
   "devDependencies": {
     "jest": "^29.7.0",

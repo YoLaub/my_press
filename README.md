@@ -1,20 +1,20 @@
 # my_press
 
-Page web qui affiche des news RSS (agrégées par n8n dans Postgres) dans un style « une de journal papier », responsive.
+Page web qui affiche des news RSS (agrégées par n8n dans MySQL) dans un style « une de journal papier », responsive.
 
 ```
-n8n ──insert──> Postgres (table news) <──lit── Express ──sert──> Navigateur
+n8n ──insert──> MySQL (table news) <──lit── Express ──sert──> Navigateur
 ```
 
 ## Installation
 
 ```bash
 npm install
-cp .env.example .env   # puis renseigne tes accès Postgres
-psql "$DATABASE_URL" -f schema.sql   # crée la table news + index
+cp .env.example .env   # puis renseigne tes accès MySQL
+mysql -h "$DB_HOST" -u "$DB_USER" -p "$DB_NAME" < schema.sql   # crée la table news + index
 ```
 
-Variables (`.env`) : `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE`, `PORT` (défaut 3000).
+Variables (`.env`) : `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, `PORT` (défaut 3000).
 
 ## Lancement
 
@@ -40,4 +40,4 @@ Le flux insère une ligne par item RSS dans `news` (colonnes : `title`, `link`,
 - Requêtes SQL paramétrées (aucune concaténation de valeurs).
 - En-têtes HTTP durcis via `helmet`.
 - Contenu échappé côté navigateur (pas d'injection HTML depuis les données RSS).
-- Le navigateur ne parle jamais directement à Postgres : tout passe par l'API.
+- Le navigateur ne parle jamais directement à MySQL : tout passe par l'API.
