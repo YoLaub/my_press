@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Press</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="masthead">
+    <h1 class="masthead-title">My Press</h1>
+    <p class="masthead-meta" id="masthead-date"></p>
+    <form class="search" id="search-form">
+      <input type="search" id="search-input" placeholder="Rechercher un mot-clé…" aria-label="Recherche">
+      <button type="submit">Rechercher</button>
+    </form>
+  </header>
+
+  <main id="news" class="news-columns" aria-live="polite"></main>
+
+  <nav class="pager">
+    <button id="prev" disabled>← Précédent</button>
+    <span id="page-info"></span>
+    <button id="next" disabled>Suivant →</button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
