@@ -24,6 +24,20 @@ function createApp(db) {
     }
   });
 
+  app.get('/api/news/:id', async (req, res) => {
+    const id = Number(req.params.id);
+    if (!Number.isInteger(id) || id < 1) {
+      return res.status(400).json({ error: 'Identifiant invalide' });
+    }
+    try {
+      const article = await db.getNewsById(id);
+      if (!article) return res.status(404).json({ error: 'Article introuvable' });
+      res.json(article);
+    } catch (err) {
+      res.status(500).json({ error: 'Impossible de charger l\'article' });
+    }
+  });
+
   app.use(express.static(path.join(__dirname, 'public')));
 
   return app;
